@@ -1,7 +1,12 @@
 import React from 'react';
+import GlobalStyles from './components/GlobalStyles';
 
 const App: React.FC = () => {
-	return <div>Movie World</div>;
+	return (
+		<div>
+			<GlobalStyles />Movie World
+		</div>
+	);
 };
 
 export default App;
