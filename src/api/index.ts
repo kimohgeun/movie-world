@@ -6,9 +6,11 @@ const api = axios.create({
 	params: {
 		api_key: key,
 		language: 'ko',
+		region: 'KR',
 	},
 });
 
 export const movies = {
 	popular: () => api.get('movie/popular'),
+	upcoming: () => api.get('movie/upcoming'),
 };

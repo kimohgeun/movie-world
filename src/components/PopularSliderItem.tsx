@@ -58,7 +58,7 @@ const Box = styled.div`
 
 const Image = styled.img`
 	width: 100%;
-	filter: brightness(50%);
+	filter: brightness(80%);
 `;
 
 const ContentBox = styled.div`

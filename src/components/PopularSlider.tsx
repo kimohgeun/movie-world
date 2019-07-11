@@ -31,7 +31,6 @@ const PopularSlider: React.FC<Props> = ({ popular }) => {
 					vote_average={item.vote_average}
 				/>
 			))}
-			{console.log(popular)}
 		</Slider>
 	);
 };
