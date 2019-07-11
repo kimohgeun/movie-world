@@ -14,9 +14,12 @@ const App: React.FC = () => {
 
 //스타일 컴포넌트
 const Box = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	width: 1080px;
+	background-color: #fff;
+	margin: 0 auto;
+	@media (max-width: 1080px) {
+		width: 100%;
+	}
 `;
 
 export default App;

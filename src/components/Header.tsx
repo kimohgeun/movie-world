@@ -18,8 +18,9 @@ const Header: React.FC = () => {
 
 //스타일 컴포넌트
 const Box = styled.div`
-	width: 1080px;
+	width: 100%;
 	height: 50px;
+	padding: 0 15px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
