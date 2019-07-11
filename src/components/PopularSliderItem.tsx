@@ -53,7 +53,6 @@ const PopularSliderItem: React.FC<Props> = ({ title, release_date, backdrop_path
 //스타일 컴포넌트
 const Box = styled.div`
 	position: relative;
-	color: #fff;
 `;
 
 const Image = styled.img`
@@ -139,11 +138,12 @@ const ButtonBox = styled.div`
 
 const Button = styled.button`
 	width: 80px;
-	height: 25px;
+	height: 30px;
 	border-radius: 3px;
-	border: 1px solid #fff;
+	border: 2px solid #fff;
 	background-color: transparent;
 	font-weight: 500;
+	font-size: 0.9rem;
 	color: #fff;
 	cursor: pointer;
 	z-index: 1;

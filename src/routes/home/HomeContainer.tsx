@@ -5,6 +5,7 @@ import { movies as api } from '../../api';
 const HomeContainer: React.FC = () => {
 	const [popular, setPopular] = useState<any[]>([]);
 	const [upcoming, setUpcoming] = useState<any[]>([]);
+	const [nowPlaying, setNowPlaying] = useState<any[]>([]);
 	//영화 가져오기
 	const getMovies = async (): Promise<any> => {
 		try {
@@ -14,8 +15,12 @@ const HomeContainer: React.FC = () => {
 			const {
 				data: { results: upcoming },
 			} = await api.upcoming();
+			const {
+				data: { results: nowPlaying },
+			} = await api.nowPlaying();
 			setPopular(popular.slice(0, 5));
 			setUpcoming(upcoming);
+			setNowPlaying(nowPlaying);
 		} catch (error) {
 			console.log(error);
 		}
@@ -25,7 +30,7 @@ const HomeContainer: React.FC = () => {
 		getMovies();
 	}, []);
 
-	return <HomePresenter popular={popular} upcoming={upcoming} />;
+	return <HomePresenter popular={popular} upcoming={upcoming} nowPlaying={nowPlaying} />;
 };
 
 export default HomeContainer;

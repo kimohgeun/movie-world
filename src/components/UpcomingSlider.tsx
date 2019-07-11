@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import Item from './UpcomingSliderItem';
-import { PrevButton, NextButton } from './SliderButton';
 
 interface Props {
 	upcoming: any[];
@@ -40,8 +39,6 @@ const UpcomingSlider: React.FC<Props> = ({ upcoming }) => {
 		slidesToShow: count,
 		slidesToScroll: 1,
 		arrows: arrow,
-		prevArrow: <PrevButton />,
-		nextArrow: <NextButton />,
 	};
 	return (
 		<Box>

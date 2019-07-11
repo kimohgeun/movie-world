@@ -2,18 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface Props {
-	backdrop_path: string;
-	title: string;
-	release_date: string;
+    backdrop_path: string;
+    title: string;
+    release_date: string;
 }
 
-const UpcomingSliderItem: React.FC<Props> = ({ backdrop_path, title, release_date }) => {
-	const date: string[] = release_date.split('-');
+const NowPlayingItem: React.FC<Props> = ({ backdrop_path, title, release_date }) => {
+    const date: string[] = release_date.split('-');
 	return (
 		<Box>
 			<Image src={`https://image.tmdb.org/t/p/original${backdrop_path}`} />
-			<Date>{`${date[0]}.${date[1]}.${date[1]}`}</Date>
-			<Title>{title}</Title>
+            <Date>{`${date[0]}.${date[1]}.${date[1]}`}</Date>
+            <Title>{title}</Title>
 		</Box>
 	);
 };
@@ -21,6 +21,7 @@ const UpcomingSliderItem: React.FC<Props> = ({ backdrop_path, title, release_dat
 //스타일 컴포넌트
 const Box = styled.div`
 	padding: 0 5px;
+	margin-bottom: 20px;
 `;
 
 const Image = styled.img`
@@ -51,4 +52,4 @@ const Title = styled.h3`
 	}
 `;
 
-export default UpcomingSliderItem;
+export default NowPlayingItem;
