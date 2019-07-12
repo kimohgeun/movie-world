@@ -32,6 +32,9 @@ const Input = styled.input`
 	padding-bottom: 20px;
 	color: #fff;
 	margin: 30px 0;
+	@media (max-width: 480px) {
+		font-size: 1.2rem;
+	}
 `;
 
 export default SearchBar;

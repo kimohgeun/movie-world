@@ -37,7 +37,7 @@ const Title = styled.div`
 	}
 	@media (max-width: 480px) {
 		font-size: 1rem;
-		margin: 20px 10px;
+		margin: 20px 15px;
 		font-size: 0.9rem;
 	}
 `;

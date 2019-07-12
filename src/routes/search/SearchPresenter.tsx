@@ -1,16 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import SearchBar from '../../components/SearchBar';
+import SearchList from '../../components/SearchList';
 
 interface Props {
 	onChange(e: any): void;
 	input: string;
+	search: any[];
 }
 
-const SearchPresenter: React.FC<Props> = ({ onChange, input }) => {
+const SearchPresenter: React.FC<Props> = ({ onChange, input, search }) => {
 	return (
 		<Box>
 			<SearchBar onChange={onChange} input={input} />
+            <SearchList search={search}/>
 		</Box>
 	);
 };

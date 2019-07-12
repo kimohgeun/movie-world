@@ -24,9 +24,6 @@ const Box = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	@media (max-width: 480px) {
-		padding: 0 10px;
-	}
 `;
 
 const Title = styled.h1`
