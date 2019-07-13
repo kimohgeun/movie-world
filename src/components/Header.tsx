@@ -9,7 +9,7 @@ const Header: React.FC = () => {
 			<Link to="/">
 				<Title>Movie World</Title>
 			</Link>
-			<Link to="search">
+			<Link to="/search">
 				<SearchIcon />
 			</Link>
 		</Box>
@@ -19,11 +19,14 @@ const Header: React.FC = () => {
 //스타일 컴포넌트
 const Box = styled.div`
 	width: 100%;
-	height: 50px;
-	padding: 0 15px;
+	height: 70px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	font-size: 1.2rem;
+	@media (max-width: 720px) {
+		padding: 0 2%;
+	}
 `;
 
 const Title = styled.h1`
@@ -32,7 +35,7 @@ const Title = styled.h1`
 `;
 
 const SearchIcon = styled(FaSearch)`
-	opacity: 0.5;
+	opacity: 0.7;
 	cursor: pointer;
 	&:hover {
 		opacity: 1;

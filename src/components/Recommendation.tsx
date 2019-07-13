@@ -9,7 +9,7 @@ interface Props {
 	release_date: string;
 }
 
-const NowPlayingItem: React.FC<Props> = ({ id, backdrop_path, title, release_date }) => {
+const Recommendation: React.FC<Props> = ({ id, backdrop_path, title, release_date }) => {
 	// 날짜 설정
 	const date: string[] = release_date.split('-');
 	return (
@@ -18,7 +18,7 @@ const NowPlayingItem: React.FC<Props> = ({ id, backdrop_path, title, release_dat
 				<Image src={`https://image.tmdb.org/t/p/original${backdrop_path}`} />
 			</Link>
 			<Date>{`${date[0]}.${date[1]}.${date[1]}`}</Date>
-			<Title>{title}</Title>
+			<Title>{title}</Title>{' '}
 		</Box>
 	);
 };
@@ -51,4 +51,4 @@ const Title = styled.h3`
 	font-size: 0.8rem;
 `;
 
-export default NowPlayingItem;
+export default Recommendation;

@@ -8,21 +8,20 @@ interface Props {
 
 const PopularSlider: React.FC<Props> = ({ popular }) => {
 	const settings = {
-		arrows: false,
 		dots: false,
-		fade: true,
+		arrows: false,
 		infinite: true,
-		speed: 3000,
+		speed: 500,
+		autoplay: true,
+		autoplaySpeed: 5000,
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		autoplay: true,
-		autoplaySpeed: 7000,
 	};
 	return (
 		<Slider {...settings}>
-			{popular.map(item => (
+			{popular.map((item: any, i: number) => (
 				<Item
-					key={item.id}
+					key={i}
 					id={item.id}
 					title={item.title}
 					release_date={item.release_date}

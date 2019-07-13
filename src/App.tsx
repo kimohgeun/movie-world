@@ -16,7 +16,6 @@ const App: React.FC = () => {
 const Box = styled.div`
 	width: 1080px;
 	margin: 0 auto;
-	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2), 0 5px 5px rgba(0, 0, 0, 0.2);
 	@media (max-width: 1080px) {
 		width: 100%;
 	}

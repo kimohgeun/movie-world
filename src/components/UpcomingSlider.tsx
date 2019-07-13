@@ -26,8 +26,8 @@ const UpcomingSlider: React.FC<Props> = ({ upcoming }) => {
 		} else {
 			setArrow(true);
 		}
-    }
-    
+	}
+
 	useEffect(() => {
 		slideSetting();
 	}, []);
@@ -43,9 +43,10 @@ const UpcomingSlider: React.FC<Props> = ({ upcoming }) => {
 	return (
 		<Box>
 			<Slider {...settings}>
-				{upcoming.map(item => (
+				{upcoming.map((item: any, i: number) => (
 					<Item
-						key={item}
+						key={i}
+						id={item.id}
 						backdrop_path={item.backdrop_path}
 						title={item.title}
 						release_date={item.release_date}
@@ -58,11 +59,8 @@ const UpcomingSlider: React.FC<Props> = ({ upcoming }) => {
 
 //스타일 컴포넌트
 const Box = styled.div`
-	width: calc(100% - 60px);
+	width: calc(100% - 50px);
 	margin: 0 auto;
-	@media (max-width: 480px) {
-		width: 100%;
-	}
 `;
 
 export default UpcomingSlider;

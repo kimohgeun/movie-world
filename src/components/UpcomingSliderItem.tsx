@@ -1,17 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 interface Props {
+	id: number;
 	backdrop_path: string;
 	title: string;
 	release_date: string;
 }
 
-const UpcomingSliderItem: React.FC<Props> = ({ backdrop_path, title, release_date }) => {
+const UpcomingSliderItem: React.FC<Props> = ({ id, backdrop_path, title, release_date }) => {
+	// 날짜 설정
 	const date: string[] = release_date.split('-');
 	return (
 		<Box>
-			<Image src={`https://image.tmdb.org/t/p/original${backdrop_path}`} />
+			<Link to={`/detail/${id}`}>
+				<Image src={`https://image.tmdb.org/t/p/original${backdrop_path}`} />
+			</Link>
 			<Date>{`${date[0]}.${date[1]}.${date[1]}`}</Date>
 			<Title>{title}</Title>
 		</Box>
@@ -26,7 +31,7 @@ const Box = styled.div`
 const Image = styled.img`
 	width: 100%;
 	border-radius: 5px;
-	filter: brightness(80%);
+	filter: brightness(70%);
 	cursor: pointer;
 	&:hover {
 		filter: brightness(100%);
@@ -38,17 +43,11 @@ const Date = styled.span`
 	margin: 10px 0;
 	font-size: 0.8rem;
 	color: #9e9e9e;
-	@media (max-width: 480px) {
-		font-size: 0.7rem;
-	}
 `;
 
 const Title = styled.h3`
 	font-weight: bold;
 	font-size: 0.8rem;
-	@media (max-width: 480px) {
-		font-size: 0.7rem;
-	}
 `;
 
 export default UpcomingSliderItem;

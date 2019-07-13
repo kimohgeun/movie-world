@@ -10,9 +10,10 @@ const SearchList: React.FC<Props> = ({ search }) => {
 	console.log(search);
 	return (
 		<Box>
-			{search.map(item => (
+			{search.map((item: any, i: number) => (
 				<Item
-					key={item.id}
+					key={i}
+					id={item.id}
 					poster_path={item.poster_path}
 					title={item.title}
 					release_date={item.release_date}

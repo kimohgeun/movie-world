@@ -24,14 +24,14 @@ const Form = styled.form`
 
 const Input = styled.input`
 	width: 100%;
+	background-color: transparent;
 	border: none;
 	border-bottom: 1px solid #757575;
 	font-size: 1.5rem;
 	font-weight: 500;
-	background-color: transparent;
-	padding-bottom: 20px;
 	color: #fff;
-	margin: 30px 0;
+	padding-bottom: 20px;
+	margin: 20px 0;
 	@media (max-width: 480px) {
 		font-size: 1.2rem;
 	}

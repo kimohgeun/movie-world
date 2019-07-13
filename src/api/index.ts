@@ -20,4 +20,11 @@ export const movies = {
 				query: text,
 			},
 		}),
+	detail: (id: string) =>
+		api.get(`movie/${id}`, {
+			params: {
+				append_to_response: 'credits,videos',
+			},
+		}),
+	recommendation: (id: string) => api.get(`movie/${id}/recommendations`),
 };

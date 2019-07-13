@@ -24,9 +24,10 @@ const NowPlayingList: React.FC<Props> = ({ nowPlaying }) => {
 	}, []);
 	return (
 		<Box count={count}>
-			{nowPlaying.map(item => (
+			{nowPlaying.map((item: any, i: number) => (
 				<Item
-					key={item.id}
+					key={i}
+					id={item.id}
 					backdrop_path={item.backdrop_path}
 					title={item.title}
 					release_date={item.release_date}
@@ -38,13 +39,10 @@ const NowPlayingList: React.FC<Props> = ({ nowPlaying }) => {
 
 //스타일 컴포넌트
 const Box = styled.div<{ count: number }>`
-	width: calc(100% - 60px);
+	width: calc(100% - 50px);
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(${props => props.count}, calc(100% / ${props => props.count}));
-	@media (max-width: 480px) {
-		width: 100%;
-	}
 `;
 
 export default NowPlayingList;

@@ -28,18 +28,10 @@ const Box = styled.div`
 `;
 
 const Title = styled.div`
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	font-weight: bold;
 	text-align: center;
-	margin: 100px 15px;
-	@media (max-width: 720px) {
-		margin: 50px 15px;
-	}
-	@media (max-width: 480px) {
-		font-size: 1rem;
-		margin: 20px 15px;
-		font-size: 0.9rem;
-	}
+	margin: 80px 0;
 `;
 
 export default HomePresenter;
