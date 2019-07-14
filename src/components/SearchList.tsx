@@ -4,10 +4,10 @@ import Item from './SearchListItem';
 
 interface Props {
 	search: any[];
+	latestSearch: string[];
 }
 
-const SearchList: React.FC<Props> = ({ search }) => {
-	console.log(search);
+const SearchList: React.FC<Props> = ({ search, latestSearch }) => {
 	return (
 		<Box>
 			{search.map((item: any, i: number) => (
@@ -17,6 +17,7 @@ const SearchList: React.FC<Props> = ({ search }) => {
 					poster_path={item.poster_path}
 					title={item.title}
 					release_date={item.release_date}
+					latestSearch={latestSearch}
 				/>
 			))}
 		</Box>

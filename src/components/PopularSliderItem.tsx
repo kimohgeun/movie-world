@@ -62,7 +62,7 @@ const Box = styled.div`
 
 const Image = styled.img`
 	width: 100%;
-	filter: brightness(70%);
+	filter: brightness(90%);
 `;
 
 const InfoBox = styled.div`

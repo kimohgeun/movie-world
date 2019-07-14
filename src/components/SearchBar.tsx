@@ -8,9 +8,11 @@ interface Props {
 
 const SearchBar: React.FC<Props> = ({ onChange, input }) => {
 	return (
-        <Form onSubmit={(e: React.FormEvent<HTMLElement>)=>{
-            e.preventDefault()
-        }}>
+		<Form
+			onSubmit={(e: React.FormEvent<HTMLElement>) => {
+				e.preventDefault();
+			}}
+		>
 			<Input placeholder="제목을 입력하세요.." onChange={onChange} value={input} />
 		</Form>
 	);
