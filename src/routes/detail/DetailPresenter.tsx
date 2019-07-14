@@ -4,14 +4,18 @@ import DetailInfo from '../../components/DetailInfo';
 import CashInfo from '../../components/CastInfo';
 import Trailer from '../../components/Trailer';
 import Recommendation from '../../components/Recommendation';
+import TrailerModal from '../../components/TrailerModal';
 
 interface Props {
 	detail: any;
 	recommendation: any[];
 	count: number;
+	toggle: boolean;
+	youtubeKey: string;
+	onToggle(id: string): void;
 }
 
-const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count }) => {
+const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count, toggle, youtubeKey, onToggle }) => {
 	const castArr = detail.credits.cast.filter((cast: any) => cast.character !== '').slice(0, 5);
 	const trailerArr = detail.videos.results.slice(0, 3);
 	const recommendationArr = recommendation.slice(0, 3);
@@ -29,13 +33,19 @@ const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count }) => 
 			<Title>출연</Title>
 			<CastBox>
 				{castArr.map((item: any, i: number) => (
-					<CashInfo key={i} profile_path={item.profile_path} character={item.character} name={item.name} />
+					<CashInfo
+						key={i}
+						profile_path={item.profile_path}
+						character={item.character}
+						name={item.name}
+					/>
 				))}
 			</CastBox>
 			<Title>예고편</Title>
+			<TrailerModal toggle={toggle} youtubeKey={youtubeKey} onToggle={onToggle} />
 			<TrailerBox count={count}>
 				{trailerArr.map((item: any, i: number) => (
-					<Trailer key={i} yuotubue_key={item.key} />
+					<Trailer key={i} youtube_key={item.key} onToggle={onToggle} />
 				))}
 			</TrailerBox>
 			<Title>추천</Title>

@@ -3,13 +3,17 @@ import styled from 'styled-components';
 import { FaPlayCircle } from 'react-icons/fa';
 
 interface Props {
-	yuotubue_key: string;
+	youtube_key: string;
+	onToggle(id: string): void;
 }
 
-const Trailer: React.FC<Props> = ({ yuotubue_key }) => {
+const Trailer: React.FC<Props> = ({ youtube_key, onToggle }) => {
 	return (
 		<Box>
-			<Image src={`https://img.youtube.com/vi/${yuotubue_key}/mqdefault.jpg`} />
+			<Image
+				src={`https://img.youtube.com/vi/${youtube_key}/mqdefault.jpg`}
+				onClick={() => onToggle(youtube_key)}
+			/>
 			<Icon />
 		</Box>
 	);

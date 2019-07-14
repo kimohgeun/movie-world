@@ -7,8 +7,10 @@ interface Props {
 }
 
 const DetailContainer: React.FC<Props> = ({ match }) => {
+	// API 정보 가져오기
 	const [detail, setDetail] = useState<any>({});
 	const [recommendation, setRecommendation] = useState<any>([]);
+	// 반응형 이미지 갯수
 	const [count, setCount] = useState<number>(0);
 	window.addEventListener('resize', slideSetting);
 	function slideSetting() {
@@ -19,6 +21,13 @@ const DetailContainer: React.FC<Props> = ({ match }) => {
 			setCount(3);
 		}
 	}
+	// 모달창 토글
+	const [toggle, setToggle] = useState<boolean>(false);
+	const [youtubeKey, setYoutubeKey] = useState<string>('');
+	const onToggle = (id: string): void => {
+		setToggle(!toggle);
+		setYoutubeKey(id);
+	};
 	useEffect(() => {
 		const getDetail = async (): Promise<any> => {
 			const { id } = match.params;
@@ -39,7 +48,14 @@ const DetailContainer: React.FC<Props> = ({ match }) => {
 	return Object.keys(detail).length === 0 ? (
 		<></>
 	) : (
-		<DetailPresenter detail={detail} recommendation={recommendation} count={count} />
+		<DetailPresenter
+			detail={detail}
+			recommendation={recommendation}
+			count={count}
+			toggle={toggle}
+			youtubeKey={youtubeKey}
+			onToggle={onToggle}
+		/>
 	);
 };
 
