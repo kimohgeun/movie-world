@@ -19,14 +19,11 @@ const Header: React.FC = () => {
 //스타일 컴포넌트
 const Box = styled.div`
 	width: 100%;
-	height: 70px;
+	height: 60px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 1.2rem;
-	@media (max-width: 720px) {
-		padding: 0 2%;
-	}
+	padding: 0 15px;
 `;
 
 const Title = styled.h1`

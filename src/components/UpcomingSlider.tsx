@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import Item from './UpcomingSliderItem';
@@ -8,37 +8,23 @@ interface Props {
 }
 
 const UpcomingSlider: React.FC<Props> = ({ upcoming }) => {
-	// 반응형 이미지 슬라이드 갯수 설정
-	const [count, setCount] = useState<number>(0);
-	window.addEventListener('resize', slideSetting);
-	// 화살표 버튼 디스플레이 설정
-	const [arrow, setArrow] = useState<boolean>(true);
-
-	function slideSetting() {
-		const width: number = window.innerWidth;
-		if (720 >= width) {
-			setCount(2);
-		} else {
-			setCount(3);
-		}
-		if (480 >= width) {
-			setArrow(false);
-		} else {
-			setArrow(true);
-		}
-	}
-
-	useEffect(() => {
-		slideSetting();
-	}, []);
-
 	const settings = {
-		dots: false,
+		className: 'center',
+		centerMode: true,
 		infinite: true,
+		slidesToShow: 3,
 		speed: 500,
-		slidesToShow: count,
-		slidesToScroll: 1,
-		arrows: arrow,
+		prevArrow: <PrevArrow />,
+		nextArrow: <NextArrow />,
+		responsive: [
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 1,
+					arrows: false,
+				},
+			},
+		],
 	};
 	return (
 		<Box>
@@ -57,10 +43,48 @@ const UpcomingSlider: React.FC<Props> = ({ upcoming }) => {
 	);
 };
 
+function PrevArrow(props: any) {
+	const { className, onClick } = props;
+	return <PrevButton className={className} onClick={onClick} />;
+}
+
+function NextArrow(props: any) {
+	const { className, onClick } = props;
+	return <NextButton className={className} onClick={onClick} />;
+}
+
 //스타일 컴포넌트
 const Box = styled.div`
-	width: calc(100% - 50px);
-	margin: 0 auto;
+	width: 100%;
+	padding: 0 15px;
+`;
+
+const PrevButton = styled.div`
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: calc(50% - 1rem);
+	left: 10px;
+	&:before {
+		font-size: 2rem;
+		opacity: 1;
+	}
+	z-index: 1;
+`;
+
+const NextButton = styled.div`
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: calc(50% - 1rem);
+	right: 10px;
+	&:before {
+		font-size: 2rem;
+		opacity: 1;
+	}
+	z-index: 1;
 `;
 
 export default UpcomingSlider;

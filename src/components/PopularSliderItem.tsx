@@ -31,22 +31,22 @@ const PopularSliderItem: React.FC<Props> = ({ id, title, release_date, backdrop_
 	}
 	return (
 		<Box>
-			<Image src={`https://image.tmdb.org/t/p/original${backdrop_path}`} />
+			<Image src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} />
 			<InfoBox>
 				<Title>
 					{title}
 					<Date>({date})</Date>
 				</Title>
-				<GenresBox>
+				<div>
 					{genresArr.map((genre, i) => (
 						<Genre key={i}>{genre}</Genre>
 					))}
-				</GenresBox>
-				<AverageBox>
+				</div>
+				<div>
 					{stars.map((star, i) => (
 						<Star key={i}>{star}</Star>
 					))}
-				</AverageBox>
+				</div>
 				<Link to={`/detail/${id}`}>
 					<Button>자세히</Button>
 				</Link>
@@ -62,58 +62,84 @@ const Box = styled.div`
 
 const Image = styled.img`
 	width: 100%;
-	filter: brightness(90%);
+	filter: brightness(80%);
 `;
 
 const InfoBox = styled.div`
 	position: absolute;
 	display: flex;
 	flex-direction: column;
-	top: 35%;
-	left: 20px;
+	justify-content: space-between;
+	height: 150px;
+	top: calc(50% - 75px);
+	left: 15px;
+	@media (max-width: 600px) {
+		height: 130px;
+		top: calc(50% - 65px);
+	}
+	@media (max-width: 480px) {
+		height: 110px;
+		top: calc(50% - 55px);
+	}
 `;
 
 const Title = styled.h2`
 	font-size: 2rem;
 	font-weight: bold;
+	color: #fff;
+	@media (max-width: 600px) {
+		font-size: 1.5rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 1.2rem;
+	}
 `;
 
 const Date = styled.span`
 	font-size: 1.5rem;
-	font-weight: 400;
-`;
-
-const GenresBox = styled.div`
-	margin: 10px 0;
+	font-weight: bold;
+	@media (max-width: 600px) {
+		font-size: 1.2rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 1rem;
+	}
 `;
 
 const Genre = styled.span`
 	display: inline-block;
 	padding: 5px 10px;
 	background-color: #fff;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	font-weight: bold;
 	color: #424242;
 	border-radius: 5px;
 	margin-right: 5px;
-`;
-
-const AverageBox = styled.div`
-	color: #fbc02d;
-	font-size: 1.5rem;
+	@media (max-width: 600px) {
+		font-size: 0.8rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 0.7rem;
+	}
 `;
 
 const Star = styled.span`
 	margin-right: 5px;
+	color: #f1c40f;
+	font-size: 1.5rem;
+	@media (max-width: 600px) {
+		font-size: 1.2rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 1rem;
+	}
 `;
 
 const Button = styled.button`
 	width: 150px;
-	border: none;
 	border: 2px solid #fff;
 	border-radius: 5px;
 	padding: 5px 0;
-	margin: 10px 0;
 	background-color: transparent;
 	font-size: 1rem;
 	font-weight: bold;
@@ -122,6 +148,12 @@ const Button = styled.button`
 	cursor: pointer;
 	&:hover {
 		opacity: 1;
+	}
+	@media (max-width: 600px) {
+		font-size: 0.9rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 0.8rem;
 	}
 `;
 

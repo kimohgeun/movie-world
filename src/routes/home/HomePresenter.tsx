@@ -13,11 +13,19 @@ interface Props {
 const HomePresenter: React.FC<Props> = ({ popular, upcoming, nowPlaying }) => {
 	return (
 		<Box>
-			<PopularSlider popular={popular} />
-			<Title>개봉 예정</Title>
-			<UpcomingSlider upcoming={upcoming} />
-			<Title>현재 상영 중</Title>
-			<NowPlayingList nowPlaying={nowPlaying} />
+			{popular.length !== 0 && <PopularSlider popular={popular} />}
+			{upcoming.length !== 0 && (
+				<>
+					<Title>개봉 예정</Title>
+					<UpcomingSlider upcoming={upcoming} />
+				</>
+			)}
+			{nowPlaying.length !== 0 && (
+				<>
+					<Title>현재 상영 중</Title>
+					<NowPlayingList nowPlaying={nowPlaying} />
+				</>
+			)}
 		</Box>
 	);
 };
@@ -25,13 +33,17 @@ const HomePresenter: React.FC<Props> = ({ popular, upcoming, nowPlaying }) => {
 //스타일 컴포넌트
 const Box = styled.div`
 	width: 100%;
+	min-height: calc(100vh - 60px);
 `;
 
-const Title = styled.div`
-	font-size: 1.5rem;
+const Title = styled.h2`
+	padding: 15px;
 	font-weight: bold;
-	text-align: center;
-	margin: 80px 0;
+	margin-top: 100px;
+	margin-bottom: 10px;
+	@media (max-width: 600px) {
+		margin-top: 50px;
+	}
 `;
 
 export default HomePresenter;
