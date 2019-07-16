@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import poster from '../assets/poster.png';
 
 interface Props {
 	id: number;
@@ -20,7 +21,11 @@ const SearchListItem: React.FC<Props> = ({ id, poster_path, title, release_date,
 					localStorage.setItem('MOVIE_WORLD', JSON.stringify([...latestSearch, title]));
 				}}
 			>
-				<Image src={`https://image.tmdb.org/t/p/w300${poster_path}`} />
+				{poster_path !== null ? (
+					<Image src={`https://image.tmdb.org/t/p/w300${poster_path}`} />
+				) : (
+					<Image src={poster} />
+				)}
 				<TitleBox>
 					<Date>{`${date[0]}.${date[1]}.${date[1]}`}</Date>
 					<Title>{title}</Title>

@@ -6,6 +6,7 @@ import Trailer from '../../components/Trailer';
 import Recommendation from '../../components/Recommendation';
 import TrailerModal from '../../components/TrailerModal';
 import Loading from '../../components/Loading';
+import Null from '../../components/Null';
 
 interface Props {
 	detail: any;
@@ -36,11 +37,11 @@ const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count, toggl
 			{Object.keys(detail).length !== 0 && (
 				<>
 					<Title>출연</Title>
-					<CastBox>
-						{detail.credits.cast
-							.filter((cast: any) => cast.character !== '')
-							.slice(0, 6)
-							.map((item: any, i: number) => (
+					{detail.credits.cast.length === 0 ? (
+						<Null />
+					) : (
+						<CastBox>
+							{detail.credits.cast.slice(0, 6).map((item: any, i: number) => (
 								<CashInfo
 									key={i}
 									profile_path={item.profile_path}
@@ -48,34 +49,43 @@ const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count, toggl
 									name={item.name}
 								/>
 							))}
-					</CastBox>
+						</CastBox>
+					)}
 				</>
 			)}
 			{Object.keys(detail).length !== 0 && (
 				<>
 					<Title>예고편</Title>
 					<TrailerModal toggle={toggle} youtubeKey={youtubeKey} onToggle={onToggle} />
-					<TrailerBox count={count}>
-						{detail.videos.results.slice(0, 3).map((item: any, i: number) => (
-							<Trailer key={i} youtube_key={item.key} onToggle={onToggle} />
-						))}
-					</TrailerBox>
+					{detail.videos.results.length === 0 ? (
+						<Null />
+					) : (
+						<TrailerBox count={count}>
+							{detail.videos.results.slice(0, 3).map((item: any, i: number) => (
+								<Trailer key={i} youtube_key={item.key} onToggle={onToggle} />
+							))}
+						</TrailerBox>
+					)}
 				</>
 			)}
-			{recommendation.length !== 0 && (
+			{Object.keys(detail).length !== 0 && (
 				<>
 					<Title>추천</Title>
-					<RecommendationBox count={count}>
-						{recommendation.slice(0, 3).map((item: any, i: number) => (
-							<Recommendation
-								key={i}
-								id={item.id}
-								backdrop_path={item.backdrop_path}
-								title={item.title}
-								release_date={item.release_date}
-							/>
-						))}
-					</RecommendationBox>
+					{recommendation.length === 0 ? (
+						<Null />
+					) : (
+						<RecommendationBox count={count}>
+							{recommendation.slice(0, 3).map((item: any, i: number) => (
+								<Recommendation
+									key={i}
+									id={item.id}
+									backdrop_path={item.backdrop_path}
+									title={item.title}
+									release_date={item.release_date}
+								/>
+							))}
+						</RecommendationBox>
+					)}
 				</>
 			)}
 		</Box>

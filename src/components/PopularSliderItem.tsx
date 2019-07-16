@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import genres from '../genres';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import back from '../assets/back.png';
 
 interface Props {
 	id: number;
@@ -31,7 +32,11 @@ const PopularSliderItem: React.FC<Props> = ({ id, title, release_date, backdrop_
 	}
 	return (
 		<Box>
-			<Image src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} />
+			{backdrop_path !== null ? (
+				<Image src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} />
+			) : (
+				<Image src={back} />
+			)}
 			<InfoBox>
 				<Title>
 					{title}

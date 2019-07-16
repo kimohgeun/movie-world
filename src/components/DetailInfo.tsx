@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import back from '../assets/back.png';
+import poster from '../assets/poster.png';
 
 interface Props {
 	backdrop_path: string;
@@ -38,10 +40,19 @@ const DetailInfo: React.FC<Props> = ({
 	if (decimal >= 5) {
 		stars.push(<FaStarHalfAlt />);
 	}
+	console.log(backdrop_path);
 	return (
 		<Box count={count}>
-			<Image src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} count={count} />
-			<Poster src={`https://image.tmdb.org/t/p/w300${poster_path}`} count={count} />
+			{backdrop_path !== null ? (
+				<Image src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} count={count} />
+			) : (
+				<Image src={back} count={count} />
+			)}
+			{poster_path !== null ? (
+				<Poster src={`https://image.tmdb.org/t/p/w300${poster_path}`} count={count} />
+			) : (
+				<Image src={poster} count={count} />
+			)}
 			<InfoBox count={count}>
 				<Title>
 					{title}
@@ -146,7 +157,7 @@ const Star = styled.span`
 const Overview = styled.span`
 	display: inline-block;
 	margin: 5px 0;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	line-height: 1rem;
 `;
 

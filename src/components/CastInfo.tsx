@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import profile from '../assets/profile.png';
 
 interface Props {
 	profile_path: string;
@@ -10,7 +11,11 @@ interface Props {
 const CastInfo: React.FC<Props> = ({ profile_path, character, name }) => {
 	return (
 		<Box>
-			<Image src={`https://image.tmdb.org/t/p/original${profile_path}`} />
+			{profile_path !== null ? (
+				<Image src={`https://image.tmdb.org/t/p/original${profile_path}`} />
+			) : (
+				<Image src={profile} />
+			)}
 			<Character>{character}</Character>
 			<Name>{name}</Name>
 		</Box>

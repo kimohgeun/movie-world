@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import back from '../assets/back.png';
 
 interface Props {
 	id: number;
@@ -15,7 +16,11 @@ const Recommendation: React.FC<Props> = ({ id, backdrop_path, title, release_dat
 	return (
 		<Box>
 			<Link to={`/detail/${id}`}>
-				<Image src={`https://image.tmdb.org/t/p/original${backdrop_path}`} />
+				{backdrop_path !== null ? (
+					<Image src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} />
+				) : (
+					<Image src={back} />
+				)}
 			</Link>
 			<Date>{`${date[0]}.${date[1]}.${date[1]}`}</Date>
 			<Title>{title}</Title>{' '}
