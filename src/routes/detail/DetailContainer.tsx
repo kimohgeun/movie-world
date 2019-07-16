@@ -10,6 +10,7 @@ const DetailContainer: React.FC<Props> = ({ match }) => {
 	const [detail, setDetail] = useState<any>({});
 	const [recommendation, setRecommendation] = useState<any>([]);
 	const [count, setCount] = useState<number>(0);
+	const [loading, setLoading] = useState<boolean>(true);
 
 	function slideSetting() {
 		const width: number = window.innerWidth;
@@ -45,6 +46,8 @@ const DetailContainer: React.FC<Props> = ({ match }) => {
 				setRecommendation(recommendation);
 			} catch (error) {
 				console.log(error);
+			} finally {
+				setLoading(false);
 			}
 		};
 		getDetail();
@@ -58,6 +61,7 @@ const DetailContainer: React.FC<Props> = ({ match }) => {
 			toggle={toggle}
 			youtubeKey={youtubeKey}
 			onToggle={onToggle}
+			loading={loading}
 		/>
 	);
 };

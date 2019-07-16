@@ -8,6 +8,7 @@ const HomeContainer: React.FC = () => {
 	const [nowPlaying, setNowPlaying] = useState<any[]>([]);
 	const [page, setPage] = useState<number>(1);
 	const [totalPages, setTotalPages] = useState<number>(1);
+	const [loading, setLoading] = useState<boolean>(true);
 	//영화 가져오기
 	const getMovies = async (): Promise<any> => {
 		try {
@@ -30,12 +31,19 @@ const HomeContainer: React.FC = () => {
 			setTotalPages(totalPages);
 		} catch (error) {
 			console.log(error);
+		} finally {
+			setLoading(false);
 		}
 	};
+
+	useEffect(() => {
+		getMovies();
+	}, []);
 
 	//추가 영화 가져오기
 	const getMoteMovies = async (): Promise<any> => {
 		try {
+			setLoading(true);
 			const {
 				data: { results: moreNowPlaying },
 			} = await api.nowPlaying(page);
@@ -43,12 +51,10 @@ const HomeContainer: React.FC = () => {
 			setPage(page + 1);
 		} catch (error) {
 			console.log(error);
+		} finally {
+			setLoading(false);
 		}
 	};
-
-	useEffect(() => {
-		getMovies();
-	}, []);
 
 	return (
 		<HomePresenter
@@ -58,6 +64,7 @@ const HomeContainer: React.FC = () => {
 			page={page}
 			totalPages={totalPages}
 			getMoteMovies={getMoteMovies}
+			loading={loading}
 		/>
 	);
 };

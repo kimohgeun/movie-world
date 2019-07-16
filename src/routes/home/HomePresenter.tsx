@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PopularSlider from '../../components/PopularSlider';
 import UpcomingSlider from '../../components/UpcomingSlider';
 import NowPlayingList from '../../components/NowPlayingList';
+import Loading from '../../components/Loading';
 
 interface Props {
 	popular: any[];
@@ -11,11 +12,21 @@ interface Props {
 	page: number;
 	totalPages: number;
 	getMoteMovies(): Promise<any>;
+	loading: boolean;
 }
 
-const HomePresenter: React.FC<Props> = ({ popular, upcoming, nowPlaying, page, totalPages, getMoteMovies }) => {
+const HomePresenter: React.FC<Props> = ({
+	popular,
+	upcoming,
+	nowPlaying,
+	page,
+	totalPages,
+	getMoteMovies,
+	loading,
+}) => {
 	return (
 		<Box>
+			<Loading loading={loading} />
 			{popular.length !== 0 && <PopularSlider popular={popular} />}
 			{upcoming.length !== 0 && (
 				<>

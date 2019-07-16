@@ -5,6 +5,7 @@ import CashInfo from '../../components/CastInfo';
 import Trailer from '../../components/Trailer';
 import Recommendation from '../../components/Recommendation';
 import TrailerModal from '../../components/TrailerModal';
+import Loading from '../../components/Loading';
 
 interface Props {
 	detail: any;
@@ -13,11 +14,13 @@ interface Props {
 	toggle: boolean;
 	youtubeKey: string;
 	onToggle(id: string): void;
+	loading: boolean;
 }
 
-const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count, toggle, youtubeKey, onToggle }) => {
+const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count, toggle, youtubeKey, onToggle, loading }) => {
 	return (
 		<Box>
+			<Loading loading={loading} />
 			{Object.keys(detail).length !== 0 && (
 				<DetailInfo
 					backdrop_path={detail.backdrop_path}
