@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import Item from './SearchListItem';
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 
 const SearchList: React.FC<Props> = ({ search, latestSearch }) => {
 	return (
-		<Box>
+		<div>
 			{search.map((item: any, i: number) => (
 				<Item
 					key={i}
@@ -20,13 +19,8 @@ const SearchList: React.FC<Props> = ({ search, latestSearch }) => {
 					latestSearch={latestSearch}
 				/>
 			))}
-		</Box>
+		</div>
 	);
 };
-
-//스타일 컴포넌트
-const Box = styled.div`
-	padding: 0 15px;
-`;
 
 export default SearchList;

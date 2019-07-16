@@ -22,12 +22,13 @@ const LatestSearchList: React.FC<Props> = ({ latestSearch, onClick, toggle, onRe
 
 //스타일 컴포넌트
 const Box = styled.div<{ toggle: boolean }>`
-	padding: 0 15px;
 	display: ${props => (props.toggle ? 'block' : 'none')};
 `;
 
 const Title = styled.span`
+	display: inline-block;
 	font-weight: bold;
+	margin-top: 20px;
 `;
 
 export default LatestSearchList;

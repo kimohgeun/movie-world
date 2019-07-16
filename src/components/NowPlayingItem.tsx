@@ -41,7 +41,7 @@ const Image = styled.img`
 const Date = styled.span`
 	display: inline-block;
 	margin: 5px 0;
-	color: #bdbdbd;
+	color: #9e9e9e;
 `;
 
 const Title = styled.h3`

@@ -23,23 +23,22 @@ const Box = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	font-size: 0.9rem;
 `;
 
 const Title = styled.span`
-	font-size: 0.9rem;
-	filter: brightness(70%);
+	opacity: 0.7;
 	cursor: pointer;
 	&:hover {
-		filter: brightness(100%);
+		opacity: 1;
 	}
 `;
 
 const Icon = styled(FaTimes)`
-	font-size: 0.9rem;
-	filter: brightness(70%);
+	opacity: 0.7;
 	cursor: pointer;
 	&:hover {
-		filter: brightness(100%);
+		opacity: 1;
 	}
 `;
 

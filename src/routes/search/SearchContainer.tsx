@@ -13,6 +13,11 @@ const SearchContainer: React.FC = () => {
 		setInput(value);
 	};
 
+	//검색창 입력 지우기
+	const onCancel = (): void => {
+		setInput('');
+	};
+
 	//최근 검색 결과 클릭
 	const onClick = (text: string): void => {
 		setInput(text);
@@ -55,7 +60,7 @@ const SearchContainer: React.FC = () => {
 				if (latestSearch === null) {
 					setLatestSearch([]);
 				} else {
-					setLatestSearch(JSON.parse(latestSearch));
+					setLatestSearch(JSON.parse(latestSearch).reverse());
 				}
 			} catch (error) {
 				console.log(error);
@@ -72,6 +77,7 @@ const SearchContainer: React.FC = () => {
 			onClick={onClick}
 			toggle={toggle}
 			onRemove={onRemove}
+			onCancel={onCancel}
 		/>
 	);
 };

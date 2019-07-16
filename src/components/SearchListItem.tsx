@@ -20,7 +20,7 @@ const SearchListItem: React.FC<Props> = ({ id, poster_path, title, release_date,
 					localStorage.setItem('MOVIE_WORLD', JSON.stringify([...latestSearch, title]));
 				}}
 			>
-				<Image src={`https://image.tmdb.org/t/p/original${poster_path}`} />
+				<Image src={`https://image.tmdb.org/t/p/w300${poster_path}`} />
 				<TitleBox>
 					<Date>{`${date[0]}.${date[1]}.${date[1]}`}</Date>
 					<Title>{title}</Title>
@@ -35,6 +35,7 @@ const Box = styled.div`
 	margin: 20px 0;
 	display: flex;
 	align-items: center;
+	font-size: 0.8rem;
 	filter: brightness(70%);
 	cursor: pointer;
 	&:hover {
@@ -43,7 +44,13 @@ const Box = styled.div`
 `;
 
 const Image = styled.img`
-	width: 80px;
+	width: 70px;
+	@media (max-width: 600px) {
+		width: 60px;
+	}
+	@media (max-width: 480px) {
+		width: 50px;
+	}
 `;
 
 const TitleBox = styled.div`
@@ -54,14 +61,12 @@ const TitleBox = styled.div`
 
 const Date = styled.span`
 	display: inline-block;
-	margin: 10px 0;
-	font-size: 0.8rem;
+	margin: 5px 0;
 	color: #9e9e9e;
 `;
 
-const Title = styled.span`
+const Title = styled.h3`
 	font-weight: bold;
-	font-size: 0.8rem;
 `;
 
 export default SearchListItem;
