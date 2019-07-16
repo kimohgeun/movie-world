@@ -12,6 +12,10 @@ const DetailContainer: React.FC<Props> = ({ match }) => {
 	const [count, setCount] = useState<number>(0);
 	const [loading, setLoading] = useState<boolean>(true);
 
+	function onLoading() {
+		setLoading(true);
+	}
+
 	function slideSetting() {
 		const width: number = window.innerWidth;
 		if (600 >= width) {
@@ -62,6 +66,7 @@ const DetailContainer: React.FC<Props> = ({ match }) => {
 			youtubeKey={youtubeKey}
 			onToggle={onToggle}
 			loading={loading}
+			onLoading={onLoading}
 		/>
 	);
 };

@@ -16,9 +16,19 @@ interface Props {
 	youtubeKey: string;
 	onToggle(id: string): void;
 	loading: boolean;
+	onLoading(): void;
 }
 
-const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count, toggle, youtubeKey, onToggle, loading }) => {
+const DetailPresenter: React.FC<Props> = ({
+	detail,
+	recommendation,
+	count,
+	toggle,
+	youtubeKey,
+	onToggle,
+	loading,
+	onLoading,
+}) => {
 	return (
 		<Box>
 			<Loading loading={loading} />
@@ -82,6 +92,7 @@ const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count, toggl
 									backdrop_path={item.backdrop_path}
 									title={item.title}
 									release_date={item.release_date}
+									onLoading={onLoading}
 								/>
 							))}
 						</RecommendationBox>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Header from './Header';
 import Home from '../routes/home/HomeContainer';
 import Search from '../routes/search/SearchContainer';
@@ -7,7 +7,7 @@ import Detail from "../routes/detail/DetailContainer";
 
 const Router: React.FC = () => {
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Header />
 			<Switch>
 				<Route exact path="/" component={Home} />
@@ -15,7 +15,7 @@ const Router: React.FC = () => {
 				<Route path="/detail/:id" component={Detail} />
 				<Redirect from="*" to="/" />
 			</Switch>
-		</BrowserRouter>
+		</HashRouter>
 	);
 };
 

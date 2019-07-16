@@ -8,14 +8,15 @@ interface Props {
 	backdrop_path: string;
 	title: string;
 	release_date: string;
+	onLoading(): void;
 }
 
-const Recommendation: React.FC<Props> = ({ id, backdrop_path, title, release_date }) => {
+const Recommendation: React.FC<Props> = ({ id, backdrop_path, title, release_date, onLoading }) => {
 	// 날짜 설정
 	const date: string[] = release_date.split('-');
 	return (
 		<Box>
-			<Link to={`/detail/${id}`}>
+			<Link to={`/detail/${id}`} onClick={onLoading}>
 				{backdrop_path !== null ? (
 					<Image src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} />
 				) : (
