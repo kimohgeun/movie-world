@@ -8,9 +8,12 @@ interface Props {
 	popular: any[];
 	upcoming: any[];
 	nowPlaying: any[];
+	page: number;
+	totalPages: number;
+	getMoteMovies(): Promise<any>;
 }
 
-const HomePresenter: React.FC<Props> = ({ popular, upcoming, nowPlaying }) => {
+const HomePresenter: React.FC<Props> = ({ popular, upcoming, nowPlaying, page, totalPages, getMoteMovies }) => {
 	return (
 		<Box>
 			{popular.length !== 0 && <PopularSlider popular={popular} />}
@@ -24,6 +27,9 @@ const HomePresenter: React.FC<Props> = ({ popular, upcoming, nowPlaying }) => {
 				<>
 					<Title>현재 상영 중</Title>
 					<NowPlayingList nowPlaying={nowPlaying} />
+					<ButtonBox page={page} totalPages={totalPages}>
+						<Button onClick={getMoteMovies}>더 보기</Button>
+					</ButtonBox>
 				</>
 			)}
 		</Box>
@@ -44,6 +50,27 @@ const Title = styled.h2`
 	margin-bottom: 10px;
 	@media (max-width: 600px) {
 		margin-top: 50px;
+	}
+`;
+
+const ButtonBox = styled.div<{ page: number; totalPages: number }>`
+	text-align: center;
+	margin-top: 50px;
+	display: ${props => (props.page > props.totalPages ? 'none' : 'block')};
+`;
+
+const Button = styled.button`
+	border: none;
+	padding: 5px 20px;
+	border-radius: 20px;
+	background-color: #bdbdbd;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+	opacity: 0.7;
+	&:hover {
+		opacity: 1;
 	}
 `;
 
