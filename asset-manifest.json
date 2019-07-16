@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/github.io/movie-world/static/js/main.140a85a4.chunk.js",
-    "main.js.map": "/github.io/movie-world/static/js/main.140a85a4.chunk.js.map",
+    "main.js": "/github.io/movie-world/static/js/main.e10d6e39.chunk.js",
+    "main.js.map": "/github.io/movie-world/static/js/main.e10d6e39.chunk.js.map",
     "runtime~main.js": "/github.io/movie-world/static/js/runtime~main.945a037c.js",
     "runtime~main.js.map": "/github.io/movie-world/static/js/runtime~main.945a037c.js.map",
-    "static/js/2.7924a650.chunk.js": "/github.io/movie-world/static/js/2.7924a650.chunk.js",
-    "static/js/2.7924a650.chunk.js.map": "/github.io/movie-world/static/js/2.7924a650.chunk.js.map",
+    "static/js/2.8ac9fa66.chunk.js": "/github.io/movie-world/static/js/2.8ac9fa66.chunk.js",
+    "static/js/2.8ac9fa66.chunk.js.map": "/github.io/movie-world/static/js/2.8ac9fa66.chunk.js.map",
     "index.html": "/github.io/movie-world/index.html",
-    "precache-manifest.ee52606b70bcf62dc1fa0f735491c39e.js": "/github.io/movie-world/precache-manifest.ee52606b70bcf62dc1fa0f735491c39e.js",
+    "precache-manifest.26f2a2fa1e3249598c8b3fb085cad4eb.js": "/github.io/movie-world/precache-manifest.26f2a2fa1e3249598c8b3fb085cad4eb.js",
     "service-worker.js": "/github.io/movie-world/service-worker.js"
   }
 }
