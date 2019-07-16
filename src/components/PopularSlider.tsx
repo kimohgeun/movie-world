@@ -8,7 +8,7 @@ interface Props {
 
 const PopularSlider: React.FC<Props> = ({ popular }) => {
 	const settings = {
-		dots: false,
+		dots: true,
 		arrows: false,
 		infinite: true,
 		speed: 500,

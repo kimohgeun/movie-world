@@ -25,13 +25,12 @@ const Recommendation: React.FC<Props> = ({ id, backdrop_path, title, release_dat
 
 //스타일 컴포넌트
 const Box = styled.div`
-	padding: 0 5px;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
+	font-size: 0.8rem;
 `;
 
 const Image = styled.img`
 	width: 100%;
-	border-radius: 5px;
 	filter: brightness(70%);
 	cursor: pointer;
 	&:hover {
@@ -41,14 +40,12 @@ const Image = styled.img`
 
 const Date = styled.span`
 	display: inline-block;
-	margin: 10px 0;
-	font-size: 0.8rem;
+	margin: 5px 0;
 	color: #9e9e9e;
 `;
 
 const Title = styled.h3`
 	font-weight: bold;
-	font-size: 0.8rem;
 `;
 
 export default Recommendation;

@@ -16,50 +16,65 @@ interface Props {
 }
 
 const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count, toggle, youtubeKey, onToggle }) => {
-	const castArr = detail.credits.cast.filter((cast: any) => cast.character !== '').slice(0, 5);
-	const trailerArr = detail.videos.results.slice(0, 3);
-	const recommendationArr = recommendation.slice(0, 3);
-	window.scrollTo(0, 0);
 	return (
 		<Box>
-			<DetailInfo
-				poster_path={detail.poster_path}
-				title={detail.title}
-				release_date={detail.release_date}
-				genres={detail.genres}
-				vote_average={detail.vote_average}
-				overview={detail.overview}
-			/>
-			<Title>출연</Title>
-			<CastBox>
-				{castArr.map((item: any, i: number) => (
-					<CashInfo
-						key={i}
-						profile_path={item.profile_path}
-						character={item.character}
-						name={item.name}
-					/>
-				))}
-			</CastBox>
-			<Title>예고편</Title>
-			<TrailerModal toggle={toggle} youtubeKey={youtubeKey} onToggle={onToggle} />
-			<TrailerBox count={count}>
-				{trailerArr.map((item: any, i: number) => (
-					<Trailer key={i} youtube_key={item.key} onToggle={onToggle} />
-				))}
-			</TrailerBox>
-			<Title>추천</Title>
-			<RecommendationBox count={count}>
-				{recommendationArr.map((item: any, i: number) => (
-					<Recommendation
-						key={item.id}
-						id={item.id}
-						backdrop_path={item.backdrop_path}
-						title={item.title}
-						release_date={item.release_date}
-					/>
-				))}
-			</RecommendationBox>
+			{Object.keys(detail).length !== 0 && (
+				<DetailInfo
+					backdrop_path={detail.backdrop_path}
+					poster_path={detail.poster_path}
+					title={detail.title}
+					release_date={detail.release_date}
+					genres={detail.genres}
+					vote_average={detail.vote_average}
+					overview={detail.overview}
+					count={count}
+				/>
+			)}
+			{Object.keys(detail).length !== 0 && (
+				<>
+					<Title>출연</Title>
+					<CastBox>
+						{detail.credits.cast
+							.filter((cast: any) => cast.character !== '')
+							.slice(0, 6)
+							.map((item: any, i: number) => (
+								<CashInfo
+									key={i}
+									profile_path={item.profile_path}
+									character={item.character}
+									name={item.name}
+								/>
+							))}
+					</CastBox>
+				</>
+			)}
+			{Object.keys(detail).length !== 0 && (
+				<>
+					<Title>예고편</Title>
+					<TrailerModal toggle={toggle} youtubeKey={youtubeKey} onToggle={onToggle} />
+					<TrailerBox count={count}>
+						{detail.videos.results.slice(0, 3).map((item: any, i: number) => (
+							<Trailer key={i} youtube_key={item.key} onToggle={onToggle} />
+						))}
+					</TrailerBox>
+				</>
+			)}
+			{recommendation.length !== 0 && (
+				<>
+					<Title>추천</Title>
+					<RecommendationBox count={count}>
+						{recommendation.slice(0, 3).map((item: any, i: number) => (
+							<Recommendation
+								key={i}
+								id={item.id}
+								backdrop_path={item.backdrop_path}
+								title={item.title}
+								release_date={item.release_date}
+							/>
+						))}
+					</RecommendationBox>
+				</>
+			)}
 		</Box>
 	);
 };
@@ -67,33 +82,50 @@ const DetailPresenter: React.FC<Props> = ({ detail, recommendation, count, toggl
 //스타일 컴포넌트
 const Box = styled.div`
 	width: 100%;
+	min-height: calc(100vh - 60px);
+	padding-bottom: 50px;
 `;
 
 const Title = styled.h2`
-	font-size: 1.5rem;
+	padding: 15px;
 	font-weight: bold;
-	margin: 80px 0;
+	margin-top: 100px;
+	margin-bottom: 10px;
+	@media (max-width: 600px) {
+		margin-top: 50px;
+	}
 `;
 
 const CastBox = styled.div`
 	display: grid;
-	grid-template-columns: repeat(auto-fill, 150px);
-	grid-gap: 50px;
-	padding: 0 30px;
+	grid-template-columns: repeat(auto-fill, 120px);
+	grid-gap: 25px;
+	padding: 0 15px;
+	@media (max-width: 600px) {
+		grid-template-columns: repeat(auto-fill, 100px);
+	}
 `;
 
 const TrailerBox = styled.div<{ count: number }>`
-	width: calc(100% - 50px);
-	margin: 0 auto;
+	width: 100%;
+	padding: 0 15px;
 	display: grid;
-	grid-template-columns: repeat(${props => props.count}, calc(100% / ${props => props.count}));
+	grid-template-columns: repeat(
+		${props => props.count},
+		calc(((100% - ${props => (props.count - 1) * 10}px) / ${props => props.count}))
+	);
+	grid-gap: 10px;
 `;
 
 const RecommendationBox = styled.div<{ count: number }>`
-	width: calc(100% - 50px);
-	margin: 0 auto;
+	width: 100%;
+	padding: 0 15px;
 	display: grid;
-	grid-template-columns: repeat(${props => props.count}, calc(100% / ${props => props.count}));
+	grid-template-columns: repeat(
+		${props => props.count},
+		calc(((100% - ${props => (props.count - 1) * 10}px) / ${props => props.count}))
+	);
+	grid-gap: 10px;
 `;
 
 export default DetailPresenter;

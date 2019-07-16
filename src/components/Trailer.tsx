@@ -21,14 +21,9 @@ const Trailer: React.FC<Props> = ({ youtube_key, onToggle }) => {
 
 //스타일 컴포넌트
 const Box = styled.div`
-	padding: 0 5px;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
+	font-size: 0.8rem;
 	position: relative;
-`;
-
-const Image = styled.img`
-	width: 100%;
-	border-radius: 5px;
 	filter: brightness(70%);
 	cursor: pointer;
 	&:hover {
@@ -36,10 +31,21 @@ const Image = styled.img`
 	}
 `;
 
+const Image = styled.img`
+	width: 100%;
+`;
+
 const Icon = styled(FaPlayCircle)`
+	color: #fff;
 	position: absolute;
-	top: 50%;
-	left: 50%;
+	font-size: 2rem;
+	top: calc(50% - 1rem);
+	left: calc(50% - 1rem);
+	@media (max-width: 480px) {
+		font-size: 1rem;
+		top: calc(50% - 0.5rem);
+		left: calc(50% - 0.5rem);
+	}
 `;
 
 export default Trailer;

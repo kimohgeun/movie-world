@@ -11,8 +11,8 @@ const CastInfo: React.FC<Props> = ({ profile_path, character, name }) => {
 	return (
 		<Box>
 			<Image src={`https://image.tmdb.org/t/p/original${profile_path}`} />
-			<Name>{name}</Name>
 			<Character>{character}</Character>
+			<Name>{name}</Name>
 		</Box>
 	);
 };
@@ -21,23 +21,25 @@ const CastInfo: React.FC<Props> = ({ profile_path, character, name }) => {
 const Box = styled.div`
 	display: flex;
 	flex-direction: column;
+	font-size: 0.8rem;
 `;
 
 const Image = styled.img`
 	width: 100%;
-	border-radius: 5px;
+	height: 180px;
+	@media (max-width: 600px) {
+		height: 150px;
+	}
 `;
 
 const Character = styled.span`
-	font-weight: bold;
-	font-size: 0.8rem;
+	display: inline-block;
+	margin: 5px 0;
+	color: #9e9e9e;
 `;
 
-const Name = styled.span`
-	display: inline-block;
-	margin: 10px 0;
-	font-size: 0.8rem;
-	color: #9e9e9e;
+const Name = styled.h3`
+	font-weight: bold;
 `;
 
 export default CastInfo;

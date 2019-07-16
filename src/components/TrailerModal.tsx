@@ -12,10 +12,13 @@ interface Props {
 const TrailerModal: React.FC<Props> = ({ toggle, youtubeKey, onToggle }) => {
 	return (
 		<Box toggle={toggle}>
-			<ExitBox>
-				<Icon onClick={() => onToggle('')} />
-			</ExitBox>
-			<Video allowFullScreen url={`https://www.youtube.com/embed/${youtubeKey}`} />
+			<Icon onClick={() => onToggle('')} />
+			<Container>
+				<TitleBox />
+				<VideoBox>
+					<Video allowFullScreen url={`https://www.youtube.com/embed/${youtubeKey}`} />
+				</VideoBox>
+			</Container>
 		</Box>
 	);
 };
@@ -31,19 +34,14 @@ const Box = styled.div<{ toggle: boolean }>`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.9);
 	z-index: 1;
 `;
 
-const ExitBox = styled.div`
-	width: 720px;
-	background-color: #000;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-`;
-
 const Icon = styled(FaTimes)`
+	position: absolute;
+	top: 15px;
+	right: 15px;
 	color: #fff;
 	font-size: 1.5rem;
 	cursor: pointer;
@@ -51,11 +49,34 @@ const Icon = styled(FaTimes)`
 	&:hover {
 		opacity: 1;
 	}
+	@media (max-width: 480px) {
+		font-size: 1.2rem;
+	}
+	z-index: 1;
+`;
+
+const Container = styled.div`
+	width: 720px;
+	@media (max-width: 720px) {
+		width: 100%;
+	}
+`;
+
+const TitleBox = styled.div``;
+
+const VideoBox = styled.div`
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.25%;
 `;
 
 const Video = styled(Iframe)`
-	width: 720px;
-	height: 56.25%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 `;
 
 export default TrailerModal;

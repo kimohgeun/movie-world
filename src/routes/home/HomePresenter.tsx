@@ -34,6 +34,7 @@ const HomePresenter: React.FC<Props> = ({ popular, upcoming, nowPlaying }) => {
 const Box = styled.div`
 	width: 100%;
 	min-height: calc(100vh - 60px);
+	padding-bottom: 50px;
 `;
 
 const Title = styled.h2`

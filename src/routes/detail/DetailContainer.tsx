@@ -7,20 +7,23 @@ interface Props {
 }
 
 const DetailContainer: React.FC<Props> = ({ match }) => {
-	// API 정보 가져오기
 	const [detail, setDetail] = useState<any>({});
 	const [recommendation, setRecommendation] = useState<any>([]);
-	// 반응형 이미지 갯수
 	const [count, setCount] = useState<number>(0);
-	window.addEventListener('resize', slideSetting);
+
 	function slideSetting() {
 		const width: number = window.innerWidth;
-		if (720 >= width) {
+		if (600 >= width) {
 			setCount(2);
 		} else {
 			setCount(3);
 		}
 	}
+	useEffect(() => {
+		slideSetting();
+		window.addEventListener('resize', slideSetting);
+		window.scrollTo(0, 0);
+	}, []);
 	// 모달창 토글
 	const [toggle, setToggle] = useState<boolean>(false);
 	const [youtubeKey, setYoutubeKey] = useState<string>('');
@@ -29,6 +32,8 @@ const DetailContainer: React.FC<Props> = ({ match }) => {
 		setYoutubeKey(id);
 	};
 	useEffect(() => {
+		setDetail([]);
+		setRecommendation([]);
 		const getDetail = async (): Promise<any> => {
 			const { id } = match.params;
 			try {
@@ -45,9 +50,7 @@ const DetailContainer: React.FC<Props> = ({ match }) => {
 		getDetail();
 		slideSetting();
 	}, [match]);
-	return Object.keys(detail).length === 0 ? (
-		<></>
-	) : (
+	return (
 		<DetailPresenter
 			detail={detail}
 			recommendation={recommendation}
