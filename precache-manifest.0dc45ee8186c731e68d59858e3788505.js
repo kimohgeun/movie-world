@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3fff7a7b87742573d9cfaa5c50c9482b",
+    "revision": "d79447bf751149e89efa6f31ac7db8ed",
     "url": "/movie-world/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/movie-world/static/js/2.318cc96b.chunk.js"
   },
   {
-    "revision": "bf4c4ec8ffeee25c3e6f",
-    "url": "/movie-world/static/js/main.a9fa4325.chunk.js"
+    "revision": "2c744bc595616e0808de",
+    "url": "/movie-world/static/js/main.c71b6d37.chunk.js"
   },
   {
     "revision": "207aec8937300801bd2d",
