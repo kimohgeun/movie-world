@@ -31,6 +31,8 @@ const Form = styled.form`
 const Input = styled.input`
 	-webkit-appearance: none;
 	-webkit-border-radius: 0;
+	padding-left: 0;
+	padding-right: 0;
 	width: 100%;
 	background-color: transparent;
 	border: none;

@@ -57,7 +57,7 @@ const SearchContainer: React.FC = () => {
 				searchMovies();
 				setToggle(false);
 			}
-		}, 300);
+		}, 200);
 	}
 
 	function apiClear() {
