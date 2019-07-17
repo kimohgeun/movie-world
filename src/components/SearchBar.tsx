@@ -29,6 +29,8 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
 	width: 100%;
 	background-color: transparent;
 	border: none;

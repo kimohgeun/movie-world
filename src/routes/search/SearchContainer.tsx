@@ -46,7 +46,6 @@ const SearchContainer: React.FC = () => {
 						data: { results: search },
 					} = await api.search(input);
 					setSearch(search);
-					console.log(123);
 				} catch (error) {
 					console.log(error);
 				}
