@@ -27,7 +27,7 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"predeploy": "npm run build",
+		"predeploy": "yarn build",
 		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
@@ -48,5 +48,5 @@
 	"devDependencies": {
 		"gh-pages": "^2.0.1"
 	},
-	"homepage": "https://kimohgeun/github.io/movie-world"
+	"homepage": "http://kimohgeun.github.io/movie-world"
 }

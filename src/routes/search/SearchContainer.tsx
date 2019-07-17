@@ -9,6 +9,7 @@ const SearchContainer: React.FC = () => {
 	const [toggle, setToggle] = useState<boolean>(true);
 
 	const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+		apiClear();
 		const { value } = e.currentTarget;
 		setInput(value);
 	};
@@ -32,25 +33,37 @@ const SearchContainer: React.FC = () => {
 	};
 
 	//검색 영화 가져오기
+	let apiCallTime: any;
 	useEffect(() => {
-		const searchMovies = async (): Promise<any> => {
-			try {
-				const {
-					data: { results: search },
-				} = await api.search(input);
-				setSearch(search);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		if (input === '') {
-			setToggle(true);
-			setSearch([]);
-		} else {
-			searchMovies();
-			setToggle(false);
-		}
+		apiCall();
 	}, [input]);
+
+	function apiCall() {
+		apiCallTime = setTimeout(() => {
+			const searchMovies = async (): Promise<any> => {
+				try {
+					const {
+						data: { results: search },
+					} = await api.search(input);
+					setSearch(search);
+					console.log(123);
+				} catch (error) {
+					console.log(error);
+				}
+			};
+			if (input === '') {
+				setToggle(true);
+				setSearch([]);
+			} else {
+				searchMovies();
+				setToggle(false);
+			}
+		}, 300);
+	}
+
+	function apiClear() {
+		clearTimeout(apiCallTime);
+	}
 
 	//최근 검색 가져오기
 	useEffect(() => {
